@@ -34,8 +34,7 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# exclude the package-lock.json due to error
-package-lock.json
+# exclude the package-lock.json due to error package-lock.json
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
