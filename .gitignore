@@ -35,6 +35,7 @@ bower_components
 .lock-wscript
 
 # exclude the package-lock.json due to error package-lock.json
+src/sections/forms/plugins/ReactDraft.jsx
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
