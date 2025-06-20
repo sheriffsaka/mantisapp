@@ -15,10 +15,19 @@ export default function Editor() {
   const [text, setText] = useState(
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
   );
+  const [ReactDraft, setReactDraft] = useState(null);
 
   const handleChange = (value) => {
     setText(value);
   };
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      import('./plugins/ReactDraft').then((mod) => {
+        setReactDraft(() => mod.default);
+      });
+    }
+  }, []);
 
   return (
     <Grid container spacing={3}>
@@ -73,7 +82,8 @@ export default function Editor() {
         size={12}
       >
         <MainCard title="React Draft" sx={{ overflow: 'visible', '& .rdw-editor-wrapper': { overflow: 'visible' } }}>
-          <ReactDraft />
+          {/* <ReactDraft /> */}
+          {ReactDraft ? <ReactDraft /> : null}
         </MainCard>
       </Grid>
       <Grid size={12}>
