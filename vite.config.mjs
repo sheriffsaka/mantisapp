@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => {
     base: API_URL,
     plugins: [
       react(), 
-      csslogger(),
+      // csslogger(),
       jsconfigPaths(),
       VitePWA({
         registerType: 'autoUpdate',
