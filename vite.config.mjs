@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
         registerType: 'autoUpdate',
         strategies: 'injectManifest',
         srcDir: 'src/service-worker', // ✅ actual folder of your service worker
-        filename: 'sw.js',             // ✅ will output to /dist/sw.js
+        filename: 'sw-push.js',             // ✅ will output to /dist/sw.js
         injectManifest: {
           globPatterns: ['**/*.{js,css,html,png,svg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 // 5 MB
