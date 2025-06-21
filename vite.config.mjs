@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
       VitePWA({
           registerType: 'autoUpdate',
           strategies: 'injectManifest',
-          srcDir: 'src',
+          srcDir: 'src/service-worker',
           filename: 'sw-push.js',
           injectManifest: {
             globPatterns: ['**/*.{js,css,html,png,svg}'],
