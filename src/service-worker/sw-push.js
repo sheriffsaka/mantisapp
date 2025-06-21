@@ -1,29 +1,14 @@
-// src/sw-push.js
-// self.addEventListener('install', (event) => {
-//   console.log('Service Worker installed');
-// });
+// src/service-worker/sw-push.js
 
-// self.addEventListener('activate', (event) => {
-//   console.log('Service Worker activated');
-// });
-// src/sw-push.js
-
-// Required install event
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
-  console.log('[SW] Installed');
-});
-
-// Required activate event
-self.addEventListener('activate', (event) => {
-  clients.claim();
-  console.log('[SW] Activated');
-});
-
-// Optional: basic fetch handler
-self.addEventListener('fetch', (event) => {
-  // You can add caching logic here if needed
-});
-
-// Required for injectManifest to work
+// Required for Workbox to inject manifest
 self.__WB_MANIFEST;
+
+self.addEventListener('install', (event) => {
+  console.log('[SW] Installed');
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('[SW] Activated');
+  clients.claim();
+});

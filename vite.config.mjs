@@ -20,52 +20,27 @@ export default defineConfig(({ mode }) => {
       host: true
     },
     base: API_URL,
-    resolve: {
-      alias: []
-    },
     plugins: [
       react(),
       jsconfigPaths(),
       VitePWA({
-          registerType: 'autoUpdate',
-          strategies: 'injectManifest',
-          srcDir: 'src/service-worker',
-          filename: 'sw-push.js',
-          injectManifest: {
-            globPatterns: ['**/*.{js,css,html,png,svg}'],
-            maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
-          },
-          manifest,
-          includeAssets: ['favicon.svg', 'favicon.ico', 
-            'robots.txt', 'apple-touch-icon.png'],
-          devOptions: {
-            enabled: false
-          }
-        })
-
-      // VitePWA({
-      //   registerType: 'autoUpdate',
-      //   strategies: 'injectManifest',
-      //   srcDir: 'src',
-      //   filename: 'sw-push.js', // ✅ Ensures correct file is used
-      //   injectManifest: {
-      //     globPatterns: ['**/*.{js,css,html,png,svg}'],
-      //     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 // 5MB
-      //   },
-      //   manifest,
-      //   includeAssets: [
-      //     'favicon.svg',
-      //     'favicon.ico',
-      //     'robots.txt',
-      //     'apple-touch-icon.png'
-      //   ],
-      //   devOptions: {
-      //     enabled: false
-      //   }
-      // })
+        registerType: 'autoUpdate',
+        strategies: 'injectManifest',
+        srcDir: 'src/service-worker', // ✅ actual folder of your service worker
+        filename: 'sw.js',             // ✅ will output to /dist/sw.js
+        injectManifest: {
+          globPatterns: ['**/*.{js,css,html,png,svg}'],
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 // 5 MB
+        },
+        manifest,
+        includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+        devOptions: {
+          enabled: false
+        }
+      })
     ],
     build: {
-      chunkSizeWarningLimit: 1000 // Optional: silences chunk size warning
+      chunkSizeWarningLimit: 1000
     }
   };
 });
