@@ -24,3 +24,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   // You can add caching logic here if needed
 });
+
+// Required for injectManifest to work
+self.__WB_MANIFEST;
